@@ -1,6 +1,6 @@
 # get-bind
 
-get bind address. The friend of - [get-port](https://github.com/sindresorhus/get-port) to get a bind address, not only a port number.
+get bind address. The friend of [get-port](https://github.com/sindresorhus/get-port) to get a bind address, not only a port number.
 
 ## Install
 
