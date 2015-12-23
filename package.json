@@ -1,6 +1,6 @@
 {
   "name": "@maboiteaspam/get-bind",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "get bind address, not only port number",
   "main": "index.js",
   "scripts": {
@@ -21,10 +21,9 @@
   "author": "maboiteaspam",
   "license": "WTF",
   "dependencies": {
-    "get-port": "^2.1.0",
-    "promise": "^7.1.1"
+    "get-port": ">=2.1.0 <3.0.0-0",
+    "promise": ">=7.1.1 <8.0.0-0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "bin": {}
 }
