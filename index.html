@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Get-bind by maboiteaspam</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Get-bind</h1>
+        <h2>get a bind address, not only a port number</h2>
+        <a href="https://github.com/maboiteaspam/get-bind" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="get-bind" class="anchor" href="#get-bind" aria-hidden="true"><span class="octicon octicon-link"></span></a>get-bind</h1>
+
+<p>get bind address. The friend of <a href="https://github.com/sindresorhus/get-port">get-port</a> to get a bind address, not only a port number.</p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<pre><code>npm i @maboiteaspam/get-bind --save-dev
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./index<span class="pl-pds">'</span></span>)(<span class="pl-c1">8888</span>, <span class="pl-s"><span class="pl-pds">'</span>localhost<span class="pl-pds">'</span></span>)
+  .<span class="pl-en">then</span>(<span class="pl-en">console</span>.<span class="pl-smi">log</span>)
+  .<span class="pl-en">catch</span>(<span class="pl-en">console</span>.<span class="pl-smi">error</span>) <span class="pl-c">// print localhost:8888</span>
+
+<span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./index<span class="pl-pds">'</span></span>)(<span class="pl-c1">false</span>, <span class="pl-s"><span class="pl-pds">'</span>localhost<span class="pl-pds">'</span></span>)
+  .<span class="pl-en">then</span>(<span class="pl-en">console</span>.<span class="pl-smi">log</span>)
+  .<span class="pl-en">catch</span>(<span class="pl-en">console</span>.<span class="pl-smi">error</span>) <span class="pl-c">// print localhost:[random]</span>
+
+<span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./index<span class="pl-pds">'</span></span>)(<span class="pl-c1">false</span>)
+  .<span class="pl-en">then</span>(<span class="pl-en">console</span>.<span class="pl-smi">log</span>)
+  .<span class="pl-en">catch</span>(<span class="pl-en">console</span>.<span class="pl-smi">error</span>) <span class="pl-c">// print 0.0.0.0:[random]</span>
+
+<span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./index<span class="pl-pds">'</span></span>)()
+  .<span class="pl-en">then</span>(<span class="pl-en">console</span>.<span class="pl-smi">log</span>)
+  .<span class="pl-en">catch</span>(<span class="pl-en">console</span>.<span class="pl-smi">error</span>) <span class="pl-c">// print 0.0.0.0:[random]</span>
+
+<span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./index<span class="pl-pds">'</span></span>)(<span class="pl-s"><span class="pl-pds">'</span>some.other:6666<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>localhost<span class="pl-pds">'</span></span>)
+  .<span class="pl-en">then</span>(<span class="pl-en">console</span>.<span class="pl-smi">log</span>)
+  .<span class="pl-en">catch</span>(<span class="pl-en">console</span>.<span class="pl-smi">error</span>) <span class="pl-c">// print some.other:6666</span>
+
+<span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./index<span class="pl-pds">'</span></span>)(<span class="pl-s"><span class="pl-pds">'</span>some.other<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>localhost<span class="pl-pds">'</span></span>)
+  .<span class="pl-en">then</span>(<span class="pl-en">console</span>.<span class="pl-smi">log</span>)
+  .<span class="pl-en">catch</span>(<span class="pl-en">console</span>.<span class="pl-smi">error</span>) <span class="pl-c">// print localhost:some.other // this is buggy, to be improved later</span>
+
+<span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>./index<span class="pl-pds">'</span></span>)(<span class="pl-s"><span class="pl-pds">'</span>:80<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>localhost<span class="pl-pds">'</span></span>)
+  .<span class="pl-en">then</span>(<span class="pl-en">console</span>.<span class="pl-smi">log</span>)
+  .<span class="pl-en">catch</span>(<span class="pl-en">console</span>.<span class="pl-smi">error</span>) <span class="pl-c">// print localhost::80 // this is buggy too, to be improved later</span>
+</pre></div>
+
+<h2>
+<a id="read-more" class="anchor" href="#read-more" aria-hidden="true"><span class="octicon octicon-link"></span></a>Read More</h2>
+
+<ul>
+<li><a href="https://github.com/sindresorhus/get-port">https://github.com/sindresorhus/get-port</a></li>
+<li><a href="https://github.com/MaxMotovilov/node-promise">https://github.com/MaxMotovilov/node-promise</a></li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/maboiteaspam/get-bind/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/maboiteaspam/get-bind/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/maboiteaspam/get-bind"></a> is maintained by <a href="https://github.com/maboiteaspam">maboiteaspam</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
